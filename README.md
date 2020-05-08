@@ -17,7 +17,7 @@ npm i @jyorg/relation-graph
 ## 案例
 ```javascript
 import Vue from 'vue'
-import RelationGraph from '../../package/RelationGraph/index'
+import RelationGraph from '@jyorg/relation-graph'
 
 Vue.use(RelationGraph)
 ```

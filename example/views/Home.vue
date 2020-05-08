@@ -1,17 +1,17 @@
 <style lang="scss">
-    .home {
-        width: 100%;
-        height: 100%;
-    }
+  .home {
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <template>
-    <div class="home">
-        <relation-graph :categories="categories"
-                        :data="data"
-                        :links="links"
-                        :node-click="handleNodeClick"/>
-    </div>
+  <div class="home">
+    <relation-graph :categories="categories"
+                    :data="data"
+                    :links="links"
+                    :node-click="handleNodeClick"/>
+  </div>
 </template>
 
 <script>
@@ -19,6 +19,7 @@
   import RelationGraph from '../../package/RelationGraph/index'
 
   Vue.use(RelationGraph)
+
   export default {
     name: 'Home',
     data() {

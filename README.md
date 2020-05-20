@@ -12,6 +12,8 @@ npm i @jyorg/relation-graph
 | categories | 节点分类的类目 | Array | - | - |
 | data | 关系图的节点数据列表 | Array | - | - |
 | links | 节点间的关系数据 | Array | - | - |
+| config | [需要覆盖的配置文件](https://echarts.apache.org/zh/option.html#title) | Object | - | - |
+| theme | 使用的配色主题 | Sting | shine | shine/macarons |
 | node-click | 节点点击事件 | Function(data: Object) | - | - |
 
 ## 案例

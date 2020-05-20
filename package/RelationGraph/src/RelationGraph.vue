@@ -113,15 +113,16 @@
                 fontFamily: 'Avenir, Helvetica, Arial, sans-serif',
                 fontSize: document.body.clientWidth > 900 ? 12 : 8,
                 lineHeight: document.body.clientWidth > 900 ? 12 : 8,
-                // 处理 label 文字显示，一行最多显示4个
+                // 处理 label 文字显示为 displayName 字段
+                // 并且一行最多显示4个
                 formatter(object) {
-                  let name = object.data.name
-                  let displayName = ''
-                  for (let i = 0; i < name.length; i += 4) {
-                    displayName += `${name.substr(i, 4)}\n`
+                  let {displayName} = object.data
+                  let name = ''
+                  for (let i = 0; i < displayName.length; i += 4) {
+                    name += `${displayName.substr(i, 4)}\n`
                   }
-                  displayName = displayName.substr(0, displayName.length - 1)
-                  return displayName
+                  name = name.substr(0, name.length - 1)
+                  return name
                 }
               },
               categories: [],

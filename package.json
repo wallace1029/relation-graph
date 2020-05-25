@@ -1,6 +1,6 @@
 {
   "name": "@jyorg/relation-graph",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "井颐关系图谱插件",
   "main": "lib/relation-graph.common.js",
   "author": "Youzhi Wang",

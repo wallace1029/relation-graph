@@ -84,29 +84,29 @@
         }
 
         // 配置颜色和显示的文字
-        this.graph.node(function (node) {
-          let fillColor = 'rgb(206,228, 254)'
+        this.graph.node(node => {
+          let fill = 'rgb(206,228, 254)'
           let nodeSize = 30
-          let nodeFontSize = 20
+          let fontSize = 20
           let position = 'center'
 
-          if (node.id === '禁忌') fillColor = 'red'
-          else if (node.id === '不良反应') fillColor = 'orange'
-          else if (node.id === '适应症') fillColor = '#296ab4'
+          if (node.id === '禁忌') fill = 'red'
+          else if (node.id === '不良反应') fill = 'orange'
+          else if (node.id === '适应症') fill = '#296ab4'
 
           if (node.depth === 0) {
             nodeSize = 45
-            fillColor = 'teal'
-            nodeFontSize = 25
+            fill = 'teal'
+            fontSize = this.device === 'mobile' ? 30 : 25
           } else if (node.depth === 1) {
             nodeSize = 35
-            nodeFontSize = 20
+            fontSize = this.device === 'mobile' ? 30 : 20
           } else if (node.depth === 2) {
             nodeSize = 25
-            nodeSize = 15
+            fontSize = this.device === 'mobile' ? 30 : 20
           } else if (node.depth === 3) {
             nodeSize = 10
-            nodeSize = 15
+            fontSize = this.device === 'mobile' ? 30 : 20
           }
 
           if (node.x < 0) position = 'left'
@@ -118,13 +118,13 @@
             size: nodeSize,
             labelCfg: {
               offset: 10,
-              position: position,
+              position,
               style: {
-                fontSize: nodeFontSize
+                fontSize
               }
             },
             style: {
-              fill: fillColor
+              fill
             }
           }
         })
@@ -133,7 +133,14 @@
         this.graph.edge(function (edge) {
           let label = edge.target._cfg.model.edge
           if (label === '适应症' || label === '禁忌' || label === '不良反应') label = ''
-          return {label}
+          return {
+            label,
+            labelCfg: {
+              style: {
+                fontSize: 20
+              }
+            }
+          }
         })
 
         // 监听展开和收起，动画结束后重新渲染位置

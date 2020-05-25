@@ -1,25 +1,20 @@
 <style lang="scss">
-  .home {
-    width: 100%;
-    height: 100%;
-  }
+    .home {
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <template>
-  <div class="home">
-    <relation-graph :categories="categories"
-                    :data="data"
-                    :links="links"
-                    :node-click="handleNodeClick"/>
-  </div>
+    <div class="home">
+        <relation-graph :categories="categories"
+                        :data="data"
+                        :links="links"
+                        :node-click="handleNodeClick"/>
+    </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import RelationGraph from '../../package/RelationGraph/index'
-
-  Vue.use(RelationGraph)
-
   export default {
     name: 'Home',
     data() {
@@ -38,695 +33,486 @@
     mounted() {
       setTimeout(() => {
         this.categories = [
-          "药品",
-          "物质",
-          "疾病"
+          '药品',
+          '物质',
+          '疾病',
+          '用药目的'
         ]
 
         this.data = [
           {
-            "entityId": null,
-            "name": "载脂蛋白B",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': null,
+            'name': '3',
+            'displayName': '3',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1200197",
-            "name": "高（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '治疗用药:2（用药目的）',
+            'displayName': '治疗用药（用药目的）',
+            'des': '用药目的',
+            'category': 3,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1580760",
-            "name": "外周神经病变（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '舒降之',
+            'displayName': '舒降之',
+            'des': '',
+            'category': 0,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1207890",
-            "name": "脱发（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '2',
+            'displayName': '2',
+            'des': '',
+            'category': 3,
+            'symbolSize': 2
           },
           {
-            "entityId": null,
-            "name": "禁忌（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': '1038059',
+            'name': '高密度脂蛋白胆固:6（疾病）',
+            'displayName': '高密度脂蛋白胆固（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1241807",
-            "name": "胃肠胀气（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '辛伐他汀片（药品）',
+            'displayName': '辛伐他汀片（药品）',
+            'des': '药品',
+            'category': 0,
+            'symbolSize': null
           },
           {
-            "entityId": null,
-            "name": "辛伐他汀（物质）",
-            "des": "物质",
-            "category": 1,
-            "symbolSize": null
+            'entityId': null,
+            'name': '15',
+            'displayName': '15',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1093145",
-            "name": "皮疹（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '11339782',
+            'name': '杂合子家族性高胆固醇血症:4（疾病）',
+            'displayName': '杂合子家族性高胆固醇血症（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1817683",
-            "name": "呕吐（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '10',
+            'displayName': '10',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1206028",
-            "name": "胰腺炎（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '11379609',
+            'name': '升高的总胆固醇:13（疾病）',
+            'displayName': '升高的总胆固醇（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1204115",
-            "name": "便秘（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '14',
+            'displayName': '14',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1186337",
-            "name": "载脂蛋白B（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '1038059',
+            'name': '升高的总胆固:14（疾病）',
+            'displayName': '升高的总胆固（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1135913",
-            "name": "肝炎/黄疸（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '4',
+            'displayName': '4',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": null,
-            "name": "辛伐他汀片（药品）",
-            "des": "药品",
-            "category": 0,
-            "symbolSize": null
+            'entityId': null,
+            'name': '8',
+            'displayName': '8',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": null,
-            "name": "高胆固醇血症",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': '1149985',
+            'name': '高脂血症:8（疾病）',
+            'displayName': '高脂血症（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1195471",
-            "name": "冠心病（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '1195574',
+            'name': '冠心病合并高胆固醇血症:10（疾病）',
+            'displayName': '冠心病合并高胆固醇血症（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1195574",
-            "name": "冠心病死亡（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '11610683',
+            'name': '高:15（疾病）',
+            'displayName': '高（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1651842",
-            "name": "冠脉事件（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '7',
+            'displayName': '7',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": null,
-            "name": "辛伐他汀片",
-            "des": "",
-            "category": 0,
-            "symbolSize": null
+            'entityId': null,
+            'name': '12',
+            'displayName': '12',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1834908",
-            "name": "非致死性心肌梗塞（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '适应证（疾病）',
+            'displayName': '适应证（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1013079",
-            "name": "感觉异常（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '辛伐他汀（物质）',
+            'displayName': '辛伐他汀（物质）',
+            'des': '物质',
+            'category': 1,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1257323",
-            "name": "肌肉痉挛（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '11',
+            'displayName': '11',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1012063",
-            "name": "腹泻（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '13',
+            'displayName': '13',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1038059",
-            "name": "胆固（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '1',
+            'displayName': '1',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": null,
-            "name": "新病灶",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': null,
+            'name': '5',
+            'displayName': '5',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1026740",
-            "name": "过敏反应综（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': null,
+            'name': '9',
+            'displayName': '9',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1222769",
-            "name": "恶心（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '11471484',
+            'name': '纯合子家族性高胆固醇血症患:11（疾病）',
+            'displayName': '纯合子家族性高胆固醇血症患（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": null,
-            "name": "胆固",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': null,
+            'name': '原发性高胆固醇血症:3（疾病）',
+            'displayName': '原发性高胆固醇血症（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1244111",
-            "name": "横纹肌溶解（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '1186337',
+            'name': '载脂蛋白B:7（疾病）',
+            'displayName': '载脂蛋白B（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1210601",
-            "name": "肌痛（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '1195574',
+            'name': '冠心病:16（疾病）',
+            'displayName': '冠心病（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": "1205458",
-            "name": "活动性肝病（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '1038059',
+            'name': '总胆固:12（疾病）',
+            'displayName': '总胆固（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": null,
-            "name": "死亡",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': null,
+            'name': '6',
+            'displayName': '6',
+            'des': '',
+            'category': 2,
+            'symbolSize': 2
           },
           {
-            "entityId": "1456737",
-            "name": "怀孕（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
+            'entityId': '11485588',
+            'name': '混合性高脂血症:1（疾病）',
+            'displayName': '混合性高脂血症（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": null,
-            "name": "甘油三",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': '1553589',
+            'name': '冠状动脉措桥术:5（疾病）',
+            'displayName': '冠状动脉措桥术（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           },
           {
-            "entityId": null,
-            "name": "冠心病合并高胆固醇血症",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "1034911",
-            "name": "贫血（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "冠心病死亡",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": null,
-            "name": "不良反应（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "11485722",
-            "name": "高甘油三酯血症（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "高甘油三酯血症",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "1223549",
-            "name": "头痛（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1256550",
-            "name": "甘油三（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1222730",
-            "name": "腹痛（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "非致死性心肌梗塞",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": null,
-            "name": "冠脉事件",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "11067252",
-            "name": "消化不良（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1833668",
-            "name": "冠状动脉搭桥术（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "高",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "1256532",
-            "name": "冠心病合并高胆固醇血症（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "12136368",
-            "name": "疲乏无（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "11485714",
-            "name": "高胆固醇血症（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1290404",
-            "name": "新病灶（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1126497",
-            "name": "死亡（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "冠状动脉搭桥术",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
-          },
-          {
-            "entityId": "1260065",
-            "name": "瘙痒（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": "1881562",
-            "name": "肌病（疾病）",
-            "des": "疾病",
-            "category": 2,
-            "symbolSize": null
-          },
-          {
-            "entityId": null,
-            "name": "冠心病",
-            "des": "",
-            "category": 2,
-            "symbolSize": 2
+            'entityId': '1256550',
+            'name': '甘油三:9（疾病）',
+            'displayName': '甘油三（疾病）',
+            'des': '疾病',
+            'category': 2,
+            'symbolSize': null,
+            'isLeaf': true
           }
         ]
 
         this.links = [
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "辛伐他汀片",
-            "name": "名称"
+            'source': '辛伐他汀片（药品）',
+            'target': '舒降之',
+            'name': '名称'
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "辛伐他汀（物质）",
-            "name": "有效成分"
+            'source': '辛伐他汀片（药品）',
+            'target': '辛伐他汀（物质）',
+            'name': '有效成分'
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "高胆固醇血症",
-            "name": ""
+            'source': '辛伐他汀片（药品）',
+            'target': '适应证（疾病）',
+            'name': '适应证'
           },
           {
-            "source": "高胆固醇血症",
-            "target": "高胆固醇血症（疾病）",
-            "name": "适应证"
+            'source': '适应证（疾病）',
+            'target': '1',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "载脂蛋白B",
-            "name": ""
+            'source': '1',
+            'target': '混合性高脂血症:1（疾病）',
+            'name': ''
           },
           {
-            "source": "载脂蛋白B",
-            "target": "载脂蛋白B（疾病）",
-            "name": "适应证"
+            'source': '适应证（疾病）',
+            'target': '2',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "甘油三",
-            "name": ""
+            'source': '2',
+            'target': '治疗用药:2（用药目的）',
+            'name': ''
           },
           {
-            "source": "甘油三",
-            "target": "甘油三（疾病）",
-            "name": "适应证"
+            'source': '2',
+            'target': '原发性高胆固醇血症:3（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "胆固",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '3',
+            'name': ''
           },
           {
-            "source": "胆固",
-            "target": "胆固（疾病）",
-            "name": "适应证"
+            'source': '3',
+            'target': '杂合子家族性高胆固醇血症:4（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "高",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '4',
+            'name': ''
           },
           {
-            "source": "高",
-            "target": "高（疾病）",
-            "name": "适应证"
+            'source': '4',
+            'target': '冠状动脉措桥术:5（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "高甘油三酯血症",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '5',
+            'name': ''
           },
           {
-            "source": "高甘油三酯血症",
-            "target": "高甘油三酯血症（疾病）",
-            "name": "适应证"
+            'source': '5',
+            'target': '高密度脂蛋白胆固:6（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "冠心病",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '6',
+            'name': ''
           },
           {
-            "source": "冠心病",
-            "target": "冠心病（疾病）",
-            "name": "适应证"
+            'source': '6',
+            'target': '载脂蛋白B:7（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "冠心病合并高胆固醇血症",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '7',
+            'name': ''
           },
           {
-            "source": "冠心病合并高胆固醇血症",
-            "target": "冠心病合并高胆固醇血症（疾病）",
-            "name": "适应证"
+            'source': '7',
+            'target': '高脂血症:8（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "死亡",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '8',
+            'name': ''
           },
           {
-            "source": "死亡",
-            "target": "死亡（疾病）",
-            "name": "适应证"
+            'source': '8',
+            'target': '甘油三:9（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "冠心病死亡",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '9',
+            'name': ''
           },
           {
-            "source": "冠心病死亡",
-            "target": "冠心病死亡（疾病）",
-            "name": "适应证"
+            'source': '9',
+            'target': '冠心病合并高胆固醇血症:10（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "非致死性心肌梗塞",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '10',
+            'name': ''
           },
           {
-            "source": "非致死性心肌梗塞",
-            "target": "非致死性心肌梗塞（疾病）",
-            "name": "适应证"
+            'source': '10',
+            'target': '纯合子家族性高胆固醇血症患:11（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "冠脉事件",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '11',
+            'name': ''
           },
           {
-            "source": "冠脉事件",
-            "target": "冠脉事件（疾病）",
-            "name": "适应证"
+            'source': '11',
+            'target': '总胆固:12（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "冠状动脉搭桥术",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '12',
+            'name': ''
           },
           {
-            "source": "冠状动脉搭桥术",
-            "target": "冠状动脉搭桥术（疾病）",
-            "name": "适应证"
+            'source': '12',
+            'target': '升高的总胆固醇:13（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "新病灶",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '13',
+            'name': ''
           },
           {
-            "source": "新病灶",
-            "target": "新病灶（疾病）",
-            "name": "适应证"
+            'source': '13',
+            'target': '升高的总胆固:14（疾病）',
+            'name': ''
           },
           {
-            "source": "辛伐他汀片（药品）",
-            "target": "不良反应（疾病）",
-            "name": "不良反应"
+            'source': '适应证（疾病）',
+            'target': '14',
+            'name': ''
           },
           {
-            "source": "不良反应（疾病）",
-            "target": "腹痛（疾病）",
-            "name": ""
+            'source': '14',
+            'target': '高:15（疾病）',
+            'name': ''
           },
           {
-            "source": "不良反应（疾病）",
-            "target": "便秘（疾病）",
-            "name": ""
+            'source': '适应证（疾病）',
+            'target': '15',
+            'name': ''
           },
           {
-            "source": "不良反应（疾病）",
-            "target": "胃肠胀气（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "疲乏无（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "头痛（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "肌病（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "恶心（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "腹泻（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "皮疹（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "消化不良（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "瘙痒（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "脱发（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "肌肉痉挛（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "肌痛（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "胰腺炎（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "感觉异常（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "外周神经病变（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "呕吐（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "贫血（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "横纹肌溶解（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "肝炎/黄疸（疾病）",
-            "name": ""
-          },
-          {
-            "source": "不良反应（疾病）",
-            "target": "过敏反应综（疾病）",
-            "name": ""
-          },
-          {
-            "source": "辛伐他汀片（药品）",
-            "target": "禁忌（疾病）",
-            "name": "禁忌"
-          },
-          {
-            "source": "禁忌（疾病）",
-            "target": "活动性肝病（疾病）",
-            "name": ""
-          },
-          {
-            "source": "禁忌（疾病）",
-            "target": "怀孕（疾病）",
-            "name": ""
+            'source': '15',
+            'target': '冠心病:16（疾病）',
+            'name': ''
           }
         ]
+
       }, 1000)
     }
   }

@@ -15,12 +15,13 @@
     "url": "git+https://github.com/youzhiwang/relation-graph.git"
   },
   "scripts": {
-    "lib": "vue-cli-service build --dest lib --target lib --name relation-graph package/RelationGraph/index.js",
+    "lib": "vue-cli-service build --dest lib --target lib --name relation-graph packages/index.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/g6": "^3.5.0",
     "core-js": "^3.6.4",
     "echarts": "^4.7.0",
     "vue": "^2.6.11",

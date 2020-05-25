@@ -80,8 +80,8 @@
               // 布局方式，重力布局
               layout: 'force',
               force: {
-                repulsion: 500,
-                gravity: 0.1,
+                repulsion: 100,
+                gravity: 0.05,
                 edgeLength: document.body.clientWidth > 900 ? [100, 150] : [45, 60]
               },
               // 鼠标缩放，平移漫游

@@ -117,7 +117,7 @@
             label: node.label,
             size: nodeSize,
             labelCfg: {
-              offset: 10,
+              offset: position === 'bottom' ? 0 : 10,
               position,
               style: {
                 fontSize

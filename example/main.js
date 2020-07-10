@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import RelationGraph from '../packages/index'
+import axios from 'axios'
 
+Vue.prototype.$axios = axios
 Vue.use(RelationGraph)
 Vue.config.productionTip = false
 

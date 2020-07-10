@@ -1,15 +1,13 @@
 <style lang="scss" scoped src="./style/index.scss"/>
 
 <template>
-    <div class="relation-graph">
-        <div id="container" class="container"></div>
-    </div>
+  <div class="relation-graph">
+    <div id="container" class="container"></div>
+  </div>
 </template>
 
 <script>
   import echarts from 'echarts'
-  import macarons from './macarons.json'
-  import shine from './shine.json'
 
   export default {
     name: 'RelationGraph',
@@ -42,11 +40,6 @@
         default() {
           return {}
         }
-      },
-      // 使用的主题配色
-      theme: {
-        type: String,
-        default: 'shine'
       }
     },
     watch: {
@@ -63,58 +56,47 @@
     data() {
       return {
         option: {
-          // 提示框组件
-          tooltip: {
-            show: document.body.clientWidth > 900,
-            showDelay: 500,
-            formatter: function (params) {
-              return params.data.des
-            },
-            textStyle: {
-              fontSize: 10
-            }
+          title: {
+            text: '井颐知识图谱',
+            show: true
+          },
+          legend: {
+            left: 'center',
+            data: []
           },
           series: [
             {
               type: 'graph',
-              // 布局方式，重力布局
+              zoom: 1,
               layout: 'force',
               force: {
-                repulsion: 100,
-                gravity: 0.05,
-                edgeLength: document.body.clientWidth > 900 ? [100, 150] : [45, 60]
+                repulsion: 5000,
+                gravity: 1,
+                edgeLength: [50, 100],
+                layoutAnimation: true,
+                friction: 0.1
               },
-              // 鼠标缩放，平移漫游
+              // 是否开启鼠标缩放和平移漫游
               roam: true,
-              // 开启拖拽
-              draggable: true,
+              // 节点是否可拖拽，只在使用力引导布局的时候有用
+              // draggable: true,
               // 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
               focusNodeAdjacency: false,
-              // 关系图节点标记的图形
-              symbol: 'circle',
               // 关系图节点标记的大小
-              symbolSize: document.body.clientWidth > 900 ? 60 : 45,
-              // 边两端的标记类型
-              edgeSymbol: ['none', 'none'],
-              // 标记类型的大小
-              edgeSymbolSize: 10,
-              // 鼠标悬浮时在图形元素上时鼠标的样式是什么
+              symbolSize: 60,
+              // 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定
+              edgeSymbol: ['none', 'arrow'],
+              // 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定
+              edgeSymbolSize: [0, 7],
+              // 鼠标悬浮时在图形元素上时鼠标的样式是什么。同 CSS 的 cursor
               cursor: 'pointer',
-              // 关系边的公用线条样式
-              lineStyle: {
-                opacity: .3,
-                width: 1,
-                curveness: 0
-              },
-              // 图形上的文本标签
+              // 图形上的文本标签，可用于说明图形的一些数据信息
               label: {
                 show: true,
                 fontStyle: 'normal',
                 fontFamily: 'Avenir, Helvetica, Arial, sans-serif',
-                fontSize: document.body.clientWidth > 900 ? 12 : 8,
-                lineHeight: document.body.clientWidth > 900 ? 12 : 8,
-                // 处理 label 文字显示为 displayName 字段
-                // 并且一行最多显示4个
+                fontSize: 12,
+                lineHeight: 12,
                 formatter(object) {
                   let {displayName} = object.data
                   let name = ''
@@ -125,56 +107,59 @@
                   return name
                 }
               },
+              edgeLabel: {
+                show: true,
+                formatter(object) {
+                  if (object.data.name === '相互作用' || object.data.name === '适应症' || object.data.name === '适应证' || object.data.name === '禁忌') return ''
+                  else return object.data.name
+                }
+              },
               categories: [],
               data: [],
-              links: []
+              links: [],
+              animation: false,
+              animationThreshold: 10,
+              animationDuration: 300,
+              animationDurationUpdate: 300,
+              animationEasingUpdate: 'linear',
             }
-          ],
-          animation: true,
-          animationDurationUpdate: 1500,
-          animationEasingUpdate: 'quinticInOut'
+          ]
         }
       }
     },
     methods: {
       // 初始化图表
       init() {
-        // 判断 data 中的 symbolSize，如果小于10，则隐藏节点的 label 显示
+        // 因为部分节点药物同名实在太多了，前端暂时做手动去重处理
+        const newData = []
         this.data.forEach(item => {
-          if (item.symbolSize !== null && item.symbolSize <= 10) {
-            item.label = {show: false}
-          }
+          const index = newData.findIndex(subitem => subitem.displayName === item.displayName)
+          if (index === -1) newData.push(item)
         })
-        // links 连线上显示文字
-        const label = {
-          show: true,
-          formatter(object) {
-            return object.data.name
-          },
-          fontSize: 10,
-          width: 5
+        // 去重之后，如果节点数量大于50，则进行缩放
+        if (newData.length > 50) {
+          this.option.series[0].zoom = 0.5
         }
-        this.links.forEach(item => {
-          item.label = label
-        })
-        Object.assign(this.option.series[0], {categories: this.categories}, {data: this.data}, {links: this.links})
-        Object.assign(this.option, this.config)
+        this.option.legend.data = this.categories.map(item => item.name)
+        this.option.series[0].categories = this.categories
+        this.option.series[0].data = newData
+        this.option.series[0].links = this.links
 
-        const myChart = echarts.init(document.getElementById('container'), this.theme)
+        const myChart = echarts.init(document.getElementById('container'))
+
         myChart.setOption(this.option)
+
         // 防止 click 事件的重复绑定
         myChart.off('click')
-        myChart.on('click', (params) => {
+        myChart.on('click', params => {
           this.nodeClick(params.data)
         })
       }
     },
     mounted() {
-      echarts.registerTheme('macarons', macarons)
-      echarts.registerTheme('shine', shine)
       setTimeout(() => {
         this.init()
-      }, 1000)
+      }, 500)
     }
   }
 </script>
